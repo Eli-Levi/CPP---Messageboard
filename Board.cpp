@@ -13,7 +13,7 @@ std::string Board::read(unsigned int row, unsigned int col, Direction direction,
 {
    /* if(numOfChars == 0)
         return "";
-    string result = "";
+    string result;
     for (size_t i = 0; i < numOfChars; i++)
     {
         if(direction == Direction::Vertical)
@@ -25,6 +25,7 @@ std::string Board::read(unsigned int row, unsigned int col, Direction direction,
             result += theBoard.at(row).at(col+i);
         }
     }*/
+    // add cases in which the char is \n or \t.
     return "not yet";
 }
 

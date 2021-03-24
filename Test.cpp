@@ -151,3 +151,32 @@ TEST_CASE("reading vertically from an empty board should return \"____\"")
      Board board;
      CHECK(board.read(0, 0, Direction::Vertical, 5) == "_____");
 }
+
+TEST_CASE("Checks that \\n is read as a char an not a new line horizontally")
+{
+    Board board;
+    board.post(0, 0, Direction::Horizontal, "no \n new line");
+    CHECK(board.read(0, 0, Direction::Horizontal, 13) == "no \n new line");
+}
+
+TEST_CASE("Checks that \\n is read as a char an not a new line vertically")
+{
+    Board board;
+    board.post(0, 0, Direction::Vertical, "no \n new line");
+    CHECK(board.read(0, 0, Direction::Vertical, 13) == "no \\n new line");
+}
+
+TEST_CASE("Checks that \\t is read as a char an not a tabbed line vertically")
+{
+    Board board;
+    board.post(0, 0, Direction::Vertical, "no \t tabbed line");
+    CHECK(board.read(0, 0, Direction::Vertical, 16) == "no \\t tabbed line");
+}
+
+TEST_CASE("Checks that \\t is read as a char an not a tabbed line horizontally")
+{
+    Board board;
+    board.post(0, 0, Direction::Horizontal, "no \t tabbed line");
+    CHECK(board.read(0, 0, Direction::Horizontal, 16) == "no \\t tabbed line");
+}
+
